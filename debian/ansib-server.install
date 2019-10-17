@@ -1,0 +1,2 @@
+#!/usr/bin/dh-exec
+debian/etc/ansib/server/config.yaml /etc/ansib/server

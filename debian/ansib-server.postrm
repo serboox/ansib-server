@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" = "remove" ]; then
+    if [ -f /etc/systemd/system/ansib-server.service ] ; then
+        	rm -rf /etc/systemd/system/ansib-server.service
+    fi
+	if [ "$2" = "purge" ];then
+		if [ -f /etc/default/ansib-server ] ; then
+        	. /etc/default/ansib-server
+        fi
+		rmdir --ignore-fail-on-non-empty /var/lib/ansib-server
+	fi
+fi
+
+#DEBHELPER#

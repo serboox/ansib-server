@@ -1,0 +1,27 @@
+[flake8]
+# Указываем директории, в которых хранятся локальные пакеты.
+application-import-names = ansib-server
+# Указываем на то, в каком порядке должны идти импорты.
+# Используем Google Style Guide.
+# https://google.github.io/styleguide/pyguide.html
+import-order-style = google
+
+show-source = true
+
+# N531 Log messages require translation hints
+# W504 Line break after binary operator
+# A002 "id" is used as an argument and thus shadows a python builtin, consider renaming the argument
+# A003 "id" is a python builtin, consider renaming the class attribute
+# D100 Missing docstring in public module
+# D101 Missing docstring in public class
+# D102 Missing docstring in public method
+# D103 Missing docstring in public function
+# D104 Missing docstring in public package
+# D105 Missing docstring in magic method
+# D107 Missing docstring in __init__
+# D401 First line should be in imperative mood
+# I100 Import statements are in the wrong order.
+ignore = N531, W504, A002, A003, D100, D101, D102, D103, D104, D105, D107, D401,
+    I100
+
+exclude = .venv,.git,.tox,dist,doc,*lib/python*,*egg,build,tools,.ropeproject,ansib/server/db/migrations/

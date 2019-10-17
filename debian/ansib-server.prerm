@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" = "remove" ]; then
+    if [ -f /etc/ansib/server ] ; then
+        . /etc/ansib/server
+    fi
+fi
+
+#DEBHELPER#

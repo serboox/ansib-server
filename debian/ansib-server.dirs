@@ -1,0 +1,4 @@
+/etc/ansib/server
+/opt/venvs/ansib-server
+/var/log/ansib-server
+/root/.ansib-server

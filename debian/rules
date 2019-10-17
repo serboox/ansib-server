@@ -1,0 +1,41 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Sample debian/rules that uses debhelper.
+# This file was originally written by Joey Hess and Craig Small.
+# As a special exception, when this file is copied by dh-make into a
+# dh-make output file, you may use that output file without restriction.
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+
+export PYBUILD_NAME=ansib-server
+export DPKG_EXPORT_BUILDFLAGS = 1
+
+DOPACKAGES = $(shell dh_listpackages)
+
+%:
+	dh $@ \
+		--with python3 \
+		--with python-virtualenv \
+		--buildsystem=pybuild
+
+override_dh_install:
+	mkdir -p debian/etc/ansib/server/
+	cp config.example.yaml debian/etc/ansib/server/config.yaml
+	dh_install -v
+
+override_dh_auto_build:
+	dh_auto_build -- -v
+
+override_dh_auto_test:
+	echo "+ $@"
+	$(MAKE) flake8
+
+override_dh_installsystemd:
+	dh_installsystemd --restart-after-upgrade
+
+override_dh_python3:
+	dh_python3 --shebang=/usr/bin/python3
+
+override_dh_virtualenv:
+	dh_virtualenv --python /usr/bin/python3

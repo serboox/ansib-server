@@ -1,0 +1,68 @@
+
+# Other
+/build/
+/dist/
+/deb_dist/
+config.yaml
+test.json
+
+# IDE
+.idea
+.vscode
+
+# Configs
+config.yaml
+/etc/ansib/server/log/
+/tmp
+
+
+*.py[cod]
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.egg-info
+*.eggs
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+__pycache__
+*.pyc
+/tests.xml
+/.coverage
+/htmlcov/
+/.cache/
+/.pytest_cache/
+/.mypy_cache/
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Translations
+*.mo
+
+# SQLite databases
+*.sqlite
+
+# Virtual environment
+venv
+/.venv/
+
+# Environment files
+.env
+.env-mysql

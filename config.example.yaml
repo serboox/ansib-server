@@ -1,0 +1,6 @@
+---
+log_level: DEBUG
+ansible:
+  host: localhost
+  stdout_result_callback: False
+  become: False

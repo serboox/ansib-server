@@ -1,0 +1,41 @@
+Source: ansib-server
+Section: unknown
+Priority: optional
+Maintainer: Sergei Bukharkin <serboox@gmail.com>
+Build-Depends: debhelper (>= 11~),
+               dh-systemd (>= 1.5),
+               dh-python,
+               python3-all,
+               python3-crypto,
+               python3-docutils,
+               python3-jinja2,
+               python3-nose,
+               python3-packaging,
+               python3-passlib,
+               python3-setuptools,
+               python3-yaml
+Standards-Version: 4.3.0
+X-Python-Version: >= 3.6
+
+Package: ansib-server
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+         ${python3:Depends},
+         python3-crypto,
+         python3-yaml,
+         openssh-client | python3-paramiko,
+         python3-jinja2,
+         python3-httplib2,
+         python3-netaddr,
+         python3-flask,
+         python3-gunicorn
+Recommends: python3-cryptography,
+            python3-jmespath,
+            python3-kerberos,
+            python3-libcloud,
+            python3-selinux,
+            python3-winrm,
+            python3-xmltodict
+Description: Web service ansible server designed for provisioning virtual machines.
+ See the README for more details.

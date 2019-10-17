@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" = "configure" ]; then
+    if [ "$2" = "" ];then
+        if [ -f /etc/default/ansib-server ] ; then
+            . /etc/default/ansib-server
+        fi
+        mkdir -p /var/run/ansib-server
+    fi
+fi
+
+#DEBHELPER#

@@ -1,0 +1,38 @@
+variables:
+  IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME
+
+before_script:
+  - docker rmi -f $IMAGE_TAG
+# - docker info
+# - env
+
+stages:
+  - lint
+  - build
+
+lint:
+  stage: lint
+  only:
+    - master
+    - tags
+  script:
+    - echo "TODO::List stage will be implements id feature!"
+
+build:
+  only:
+    refs:
+      - master
+      - tags
+  stage: build
+  script:
+    - docker build -t $IMAGE_TAG --file debian/Dockerfile .
+    - docker create $IMAGE_TAG
+    - export AGENT_CONTAINER_ID=$(docker ps -a | grep $IMAGE_TAG | awk '{print $1}')
+    - echo $AGENT_CONTAINER_ID
+    - mkdir -p build && docker cp $AGENT_CONTAINER_ID:/root/Downloads/. ./build/
+    - docker rm $AGENT_CONTAINER_ID
+    - docker rmi -f $IMAGE_TAG
+  artifacts:
+    paths:
+      - build/*
+    expire_in: 1 week

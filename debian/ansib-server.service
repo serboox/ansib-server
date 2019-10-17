@@ -1,0 +1,39 @@
+[Unit]
+Description="Ansible Server"
+After=network.target
+
+AssertPathExists=/etc/ansib/serveer
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/default/ansib-server
+PIDFile=/var/run/ansib/server.pid
+WorkingDirectory=/root/.ansib-server
+RuntimeDirectory=gunicorn
+SyslogIdentifier=ansib-server
+SyslogLevel=debug
+User=root
+Group=root
+
+Restart=always
+RestartSec=5
+
+ExecStart=/opt/venvs/ansib-server/bin/python3 /opt/venvs/ansib-server/bin/gunicorn \
+                --pid /var/run/ansib/server.pid \
+                --bind 0.0.0.0:5007 \
+                --backlog 1024 \
+                --workers 1 \
+                --threads 4 \
+                --worker-class gthread \
+                --max-requests 1 \
+                --max-requests-jitter 100 \
+                --log-level DEBUG \
+                --name ansib-server \
+                "ansib.server.app:create_app('/etc/ansib/server/config.yaml')"
+
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
