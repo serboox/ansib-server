@@ -132,9 +132,9 @@ class Ansible(rest_plus.Resource):
             except Exception as error:
                 LOG.error(err)
                 err = error
+                return err
             finally:
                 file.close()
-            return err
 
     @staticmethod
     def _remove_files(create_files: List[Dict]) -> Exception:
