@@ -5,7 +5,7 @@ asn1crypto==0.24.0
 attrs==19.1.0
 cffi==1.12.3
 Click==7.0
-cryptography==2.7
+cryptography==3.2
 docopt==0.6.2
 entrypoints==0.3
 flake8==3.7.8
