@@ -13,7 +13,7 @@ Flask==1.1.1
 flask-restplus==0.13.0
 gunicorn==19.9.0
 itsdangerous==1.1.0
-Jinja2==2.10.1
+Jinja2==2.11.3
 jsonschema==3.0.2
 MarkupSafe==1.1.1
 mccabe==0.6.1
