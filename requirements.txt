@@ -1,5 +1,5 @@
 aniso8601==8.0.0
-ansible==2.8.4
+ansible==4.2.0
 ansible-vault==1.2.0
 asn1crypto==0.24.0
 attrs==19.1.0
